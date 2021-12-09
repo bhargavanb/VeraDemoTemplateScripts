@@ -1,41 +1,41 @@
 # File: veracode-sast-platform-job.yml
 
 parameters:
-- name: solution
+- name: artifact
   default: ''
   type: string
 
 jobs:       
- - job: SAST_Security_Testing
+ - job: Veracode_Platform_SAST
    displayName: Static Analysis Security Testing
+   dependsOn: Build
 
    steps:
-
    # step to validate required parameters
    - bash: |
-        if [ -z "$SOLUTION" ]; then
-          echo "##vso[task.logissue type=error;]Missing template parameter \"ArtifactName\""
+        if [ -z "$ARTIFACT" ]; then
+          echo "##vso[task.logissue type=error;]Missing template parameter \"artifact\""
           echo "##vso[task.complete result=Failed;]"
         fi
 
    - task: DownloadPipelineArtifact@2
      inputs:
-        artifact: ${{ parameters.solution }}
+        artifact: ${{ parameters.artifact }}
 
-   - bash: echo ${{ parameters.solution }}
+   - bash: echo ${{ parameters.artifact }}
    - bash: ls -la
 
-   #- task: Veracode@3
-   #  inputs:
-   #     ConnectionDetailsSelection: 'Endpoint'
-   #     AnalysisService: 'Veracode SaaS Connection'
+   - task: Veracode@3
+     inputs:
+        ConnectionDetailsSelection: 'Endpoint'
+        AnalysisService: 'Veracode SaaS Connection'
         # apiId: '$(VERACODE_ID)'
         # apiKey: '$(VERACODE_KEY)'
-   #     veracodeAppProfile: '$(system.teamProject)'
-   #     version: '$(build.buildNumber)'
-   #     filepath: '$(Pipeline.Workspace)'  #$(build.artifactstagingdirectory)
-   #     sandboxName: 'Development Sandbox'
-   #     failBuildIfUploadAndScanBuildStepFails: true
-   #     importResults: true
+        veracodeAppProfile: '$(system.teamProject)'
+        version: '$(build.buildNumber)'
+        filepath: '$(Pipeline.Workspace)'
+        sandboxName: 'Development Sandbox'
+        failBuildIfUploadAndScanBuildStepFails: true
+        importResults: true
        # failBuildOnPolicyFail: true
        # maximumWaitTime: '360'
