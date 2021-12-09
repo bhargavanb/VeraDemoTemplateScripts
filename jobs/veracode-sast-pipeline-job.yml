@@ -1,15 +1,28 @@
 # File: veracode-sast-pipeline-job.yml
 
+parameters:
+- name: downloadArtifact
+  default: ''
+  type: string
+
+
 jobs:       
  - job: SAST_Security_Testing
    displayName: Static Analysis Security Testing
 
    steps:
+   # step to validate required parameters
+   - bash: |
+        if [ -z "$downloadArtifact" ]; then
+          echo "##vso[task.logissue type=error;]Missing template parameter \"downloadArtifact\""
+          echo "##vso[task.complete result=Failed;]"
+        fi
+
    #- template: ../steps/veracode-sast-pipeline-steps.yml
 
-   #- task: DownloadPipelineArtifact@2
-   #  inputs:
-   #     artifact: Debug_WebApp
+   - task: DownloadPipelineArtifact@2
+     inputs:
+        artifact: ${{ parameters.downloadArtifact }}
 
    - bash: echo 'Veracode Pipeline SAST'
    - bash: ls -la

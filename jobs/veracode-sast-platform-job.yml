@@ -10,6 +10,14 @@ jobs:
    displayName: Static Analysis Security Testing
 
    steps:
+
+   # step to validate required parameters
+   - bash: |
+        if [ -z "$downloadArtifact" ]; then
+          echo "##vso[task.logissue type=error;]Missing template parameter \"downloadArtifact\""
+          echo "##vso[task.complete result=Failed;]"
+        fi
+
    - task: DownloadPipelineArtifact@2
      inputs:
         artifact: ${{ parameters.downloadArtifact }}
