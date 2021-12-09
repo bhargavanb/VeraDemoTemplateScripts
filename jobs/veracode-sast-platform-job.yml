@@ -1,7 +1,7 @@
 # File: veracode-sast-platform-job.yml
 
 parameters:
-- name: artifact
+- name: downloadArtifact
   default: ''
   type: string
 
@@ -12,7 +12,7 @@ jobs:
    steps:
    - task: DownloadPipelineArtifact@2
      inputs:
-        artifact: ${{ parameters.artifact }}
+        artifact: ${{ parameters.downloadArtifact }}
 
    - bash: echo 'Veracode Platform SAST'
    - bash: ls -la
