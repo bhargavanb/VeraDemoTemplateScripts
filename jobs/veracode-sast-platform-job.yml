@@ -1,7 +1,7 @@
 # File: veracode-sast-platform-job.yml
 
 parameters:
-- name: downloadArtifact
+- name: ArtifactName
   default: ''
   type: string
 
@@ -13,14 +13,14 @@ jobs:
 
    # step to validate required parameters
    - bash: |
-        if [ -z "$downloadArtifact" ]; then
-          echo "##vso[task.logissue type=error;]Missing template parameter \"downloadArtifact\""
+        if [ -z "$ArtifactName" ]; then
+          echo "##vso[task.logissue type=error;]Missing template parameter \"ArtifactName\""
           echo "##vso[task.complete result=Failed;]"
         fi
 
    - task: DownloadPipelineArtifact@2
      inputs:
-        artifact: ${{ parameters.downloadArtifact }}
+        artifact: ${{ parameters.ArtifactName }}
 
    - bash: echo 'Veracode Platform SAST'
    - bash: ls -la
