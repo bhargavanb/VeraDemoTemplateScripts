@@ -23,6 +23,7 @@ jobs:
         artifact: ${{ parameters.ArtifactName }}
 
    - bash: echo 'Veracode Platform SAST'
+   - bash: echo ArtifactName: ${{ parameters.ArtifactName }}
    - bash: ls -la
 
    #- task: Veracode@3
