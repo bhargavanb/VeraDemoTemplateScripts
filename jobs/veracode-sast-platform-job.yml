@@ -13,7 +13,7 @@ jobs:
 
    # step to validate required parameters
    - bash: |
-        if [ -z "$ArtifactName" ]; then
+        if [ -z "$ARTIFACTNAME" ]; then
           echo "##vso[task.logissue type=error;]Missing template parameter \"ArtifactName\""
           echo "##vso[task.complete result=Failed;]"
         fi
