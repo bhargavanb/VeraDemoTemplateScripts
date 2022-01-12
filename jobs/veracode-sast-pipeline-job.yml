@@ -24,7 +24,7 @@ jobs:
      displayName: Download Pipeline Scan
 
    - script: java -jar pipeline-scan.jar --version
-      displayName: "Run Pipeline Scan" 
+     displayName: "Run Pipeline Scan" 
      
    - script: ls -la
   # --veracode_api_id "$(VERACODE_API_ID)" --veracode_api_key "$(VERACODE_API_KEY)" --file "example.jar" --baseline_file "../baseline.json"
