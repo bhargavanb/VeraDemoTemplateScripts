@@ -18,15 +18,15 @@ jobs:
    
    
    - script: curl -sSO https://downloads.veracode.com/securityscan/pipeline-scan-LATEST.zip
-  displayName: "Download Pipeline Scan"
+     displayName: "Download Pipeline Scan"
 
-- script: unzip -o pipeline-scan-LATEST.zip
-  displayName: Download Pipeline Scan
+   - script: unzip -o pipeline-scan-LATEST.zip
+     displayName: Download Pipeline Scan
 
-- script: java -jar pipeline-scan.jar --version
-  displayName: "Run Pipeline Scan" 
+   - script: java -jar pipeline-scan.jar --version
+      displayName: "Run Pipeline Scan" 
      
-- script: ls -la
+   - script: ls -la
   # --veracode_api_id "$(VERACODE_API_ID)" --veracode_api_key "$(VERACODE_API_KEY)" --file "example.jar" --baseline_file "../baseline.json"
   # VERACODE_API_ID and VERACODE_API_KEY must reference your API credentials.
   # "--baseline_file" specifies the baseline of known flaws for the specified application file.
