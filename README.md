@@ -9,9 +9,9 @@ This repository has several Azure Devops yaml template scirpts that are referenc
 ## Goal and Requirments
 The intent of this repository is to present templates to satisfy the goals and the requirement for the [verademo-core](https://github.com/dmedeiros-veracode/verademo-core) project as it evolves as a representation of CI/CD integration best practices using Veracode.
 
-The examples within this repository show how an administrator can use seperation of concenrs to properly template basic steps. That can simplify and be reused for use of integration of Veracode tools wihin their SDLC. 
+The examples within show how an administrator can use seperation of concenrs to properly template basic steps. That by simplifing and reuse ease integration of Veracode tools wihin their SDLC. 
 
-The seperation of Job Tasks and Steps to perform common tasks within an automated pipeline were derived out into two categories.
+The seperation of Job Tasks and Steps to perform common tasks within an automated pipeline were derived into to the two categories.
 
 ### Steps Templates 
 - ***abstract-build-steps.yml***
