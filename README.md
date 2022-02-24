@@ -11,7 +11,7 @@ The intent of this repository is to present templates to satisfy the goals and t
 
 The examples within show how an administrator can use seperation of concenrs to properly template basic steps. That by simplifing and reuse ease integration of Veracode tools wihin their SDLC. 
 
-The seperation of Job Tasks and Steps to perform common tasks within an automated pipeline were derived into to the two categories.
+The seperation of Job Tasks and Steps to perform common tasks within an automated pipeline were derived into two categories.
 
 ### Steps Templates 
 - ***abstract-build-steps.yml***
